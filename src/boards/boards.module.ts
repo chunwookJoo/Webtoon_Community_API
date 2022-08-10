@@ -4,13 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardsController } from './boards.controller';
 import { BoardRepository } from './board.repository';
 import { BoardsService } from './boards.service';
+import { AuthModule } from 'src/auth/auth.module';
 // import { Board, BoardSchema } from './schema/board.shema';
 
 @Module({
-  imports: [
-    // MongooseModule.forFeature([{ name: Board.name, schema: BoardSchema }]),
-    TypeOrmModule.forFeature([BoardRepository]),
-  ],
+  imports: [TypeOrmModule.forFeature([BoardRepository]), AuthModule],
   controllers: [BoardsController],
   providers: [BoardsService],
 })
