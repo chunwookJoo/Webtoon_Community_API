@@ -1,5 +1,5 @@
-import { EntityRepository, Repository } from 'typeorm';
-import { UpdateInfo } from './update-info.entity';
+// import { EntityRepository, Repository } from 'typeorm';
+// import { UpdateInfo } from './update-info.entity';
 
-@EntityRepository(UpdateInfo)
-export class UpdateInfoRepository extends Repository<UpdateInfo> {}
+// @EntityRepository(UpdateInfo)
+// export class UpdateInfoRepository extends Repository<UpdateInfo> {}

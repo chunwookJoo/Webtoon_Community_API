@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 // import { typeORMConfig } from 'src/configs/config.typeorm';
 import { AuthModule } from './auth/auth.module';
+import { WebtoonModule } from './webtoons/webtoons.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     BoardsModule,
     AuthModule,
+    WebtoonModule,
   ],
 })
 export class AppModule {}

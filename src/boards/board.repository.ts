@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 // import { User } from 'src/auth/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { BoardStatus } from './board-status.enum';
@@ -39,5 +39,13 @@ export class BoardRepository {
   async createBoard(board: Board): Promise<Board> {
     const newBoard = new this.boardModel(board);
     return newBoard.save();
+  }
+
+  async findOne(userFilterQuery: FilterQuery<Board>): Promise<Board> {
+    return this.boardModel.findOne(userFilterQuery);
+  }
+
+  async find(): Promise<Board[]> {
+    return this.boardModel.find();
   }
 }

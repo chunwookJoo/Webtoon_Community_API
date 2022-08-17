@@ -61,4 +61,8 @@ export class BoardsService {
       description,
     });
   }
+
+  async getAllBoards(): Promise<Board[]> {
+    return this.boardRepository.find();
+  }
 }

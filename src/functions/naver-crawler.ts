@@ -55,7 +55,6 @@ async function get_webtoonData(
   weeknum: number,
 ): Promise<WebtoonObject.CrawlerOutput[]> {
   const $ = await load_$(`${NAVER_WEBTOON_URL}/webtoon/${type}.nhn?${query}`);
-  console.log($);
 
   const BASE_SELECTOR = '#ct > div.section_list_toon > ul > li > a';
   const base$ = $(BASE_SELECTOR);
