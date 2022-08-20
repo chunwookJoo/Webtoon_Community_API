@@ -6,10 +6,9 @@ import * as config from 'config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
-  // const serverConfig = config.get('server');
-  const port = 3000;
+  const serverConfig = config.get('server');
 
-  await app.listen(port);
-  console.log(`listening on port ${port}`);
+  await app.listen(serverConfig.port);
+  console.log(`listening on port ${serverConfig.port}`);
 }
 bootstrap();

@@ -15,6 +15,14 @@ class WebtoonsController {
     return this.webtoonsService.find(this.serviceOption);
   }
 
+  @Get('new')
+  async new() {
+    return this.webtoonsService.find({
+      ...this.serviceOption,
+      week: { $in: [8] },
+    });
+  }
+
   @Get('finished')
   async finished() {
     return this.webtoonsService.find({
@@ -29,7 +37,7 @@ class WebtoonsController {
     if (!day)
       return this.webtoonsService.find({
         ...this.serviceOption,
-        week: { $nin: [7] },
+        week: { $in: [7] },
       });
 
     if (0 <= dayNum && dayNum <= 6)

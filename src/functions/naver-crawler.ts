@@ -5,8 +5,9 @@ export default async function naver_crawler() {
   console.log('naver crawler start');
   const weekWebtoon = await get_weekWebtoon();
   const finishedWebtoon = await get_finishedWebtoon();
+  const newWebtoon = await get_newWebtoon();
   console.log('naver crawler end');
-  return weekWebtoon.concat(finishedWebtoon);
+  return weekWebtoon.concat(finishedWebtoon).concat(newWebtoon);
 }
 
 const NAVER_WEBTOON_URL = 'https://m.comic.naver.com';
@@ -37,6 +38,18 @@ async function get_finishedWebtoon() {
   return result;
 }
 
+async function get_newWebtoon() {
+  const result: WebtoonObject.CrawlerOutput[] = [];
+  const $ = await load_$(NAVER_WEBTOON_URL + '/bestChallenge/genre.nhn?page=1');
+  const PAGE_COUNT_SELECTOR =
+    '#ct > div.section_list_toon > div.paging_type2 > em > span';
+  const pageCount = Number($(PAGE_COUNT_SELECTOR).text());
+  for (let page = 1; page < pageCount; page++) {
+    result.push(...(await get_webtoonData('new', `page=${page}`, 8)));
+  }
+  return result;
+}
+
 async function load_$(url: string) {
   const html: { data: string } = await axios.get(url);
   return load(html.data);
@@ -45,17 +58,20 @@ async function load_$(url: string) {
 /**한 url에 표시되는 모든 웹툰 정보를 가지고오는 함수
  * @param type 웹툰의 종류(weekday, finish)
  * @param query 웹툰의 페이지 정보(week=mon, page=1)
- * @param weeknum 웹툰의 요일(0~6) / 완결(7)
+ * @param weeknum 웹툰의 요일(0~6) / 완결(7) / 베스트도전(8)
  * @returns 표준 웹툰 정보 배열
  */
 
 async function get_webtoonData(
-  type: 'weekday' | 'finish',
+  type: 'weekday' | 'finish' | 'new',
   query: string,
   weeknum: number,
 ): Promise<WebtoonObject.CrawlerOutput[]> {
-  const $ = await load_$(`${NAVER_WEBTOON_URL}/webtoon/${type}.nhn?${query}`);
-
+  const $ = await load_$(
+    type === 'new'
+      ? `${NAVER_WEBTOON_URL}/bestChallenge/genre.nhn?${query}`
+      : `${NAVER_WEBTOON_URL}/webtoon/${type}.nhn?${query}`,
+  );
   const BASE_SELECTOR = '#ct > div.section_list_toon > ul > li > a';
   const base$ = $(BASE_SELECTOR);
 
