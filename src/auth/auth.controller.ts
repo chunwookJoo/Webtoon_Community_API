@@ -17,25 +17,32 @@ import { AuthCredentialDto } from './dto/auth-credential.dto';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('/signup')
-  signUp(
+  @Post('/kakaoSignUp')
+  kakaoSignUp(
     @Body(ValidationPipe) authCredentialDto: AuthCredentialDto,
   ): Promise<void> {
-    return this.authService.signUp(authCredentialDto);
+    return this.authService.kakaoSignUp(authCredentialDto);
   }
 
-  @Post('/signin')
-  signIn(
-    @Body(ValidationPipe) authCredentialDto: AuthCredentialDto,
-  ): Promise<{ accessToken: string }> {
-    return this.authService.signIn(authCredentialDto);
-  }
+  // @Post('/naverSignUp')
+  // naverSignUp(
+  //   @Body(ValidationPipe) authCredentialDto: AuthCredentialDto,
+  // ): Promise<void> {
+  //   return this.authService.naverSignUp(authCredentialDto);
+  // }
 
-  @Post('/test')
-  @UseGuards(AuthGuard())
-  test(@Req() req) {
-    console.log('req', req);
-  }
+  // @Post('/signin')
+  // signIn(
+  //   @Body(ValidationPipe) authCredentialDto: AuthCredentialDto,
+  // ): Promise<{ accessToken: string }> {
+  //   return this.authService.signIn(authCredentialDto);
+  // }
+
+  // @Post('/test')
+  // @UseGuards(AuthGuard())
+  // test(@Req() req) {
+  //   console.log('req', req);
+  // }
 
   @Post('/kakaoLogin')
   async kakaoLogin(@Body() body: any, @Res() res): Promise<any> {

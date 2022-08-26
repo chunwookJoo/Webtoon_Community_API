@@ -4,14 +4,29 @@ import { Document } from 'mongoose';
 export type UserDocument = User & Document;
 @Schema()
 export class User {
-  @Prop()
+  @Prop({ required: true })
+  kakaoToken: string;
+
+  // @Prop({ required: true })
+  // naverToken: string;
+
+  @Prop({ required: true })
   id: string;
 
   @Prop({ required: true })
-  username: string;
+  email: string;
 
   @Prop({ required: true })
-  password: string;
+  nickname: string;
+
+  @Prop({ required: true })
+  age: string;
+
+  @Prop({ required: true })
+  gender: string;
+
+  // @Prop({ required: true })
+  // password: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

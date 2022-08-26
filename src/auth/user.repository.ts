@@ -3,11 +3,11 @@ import {
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { EntityRepository, Repository } from 'typeorm';
+// import { EntityRepository, Repository } from 'typeorm';
 import { AuthCredentialDto } from './dto/auth-credential.dto';
 // import { User } from './user.entity';
 import { User, UserDocument } from './schema/user.schema';
-import * as bcrypt from 'bcryptjs';
+// import * as bcrypt from 'bcryptjs';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
 
@@ -38,11 +38,29 @@ import { FilterQuery, Model } from 'mongoose';
 export class UserRepository {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  // 회원가입
-  async createUser(user: User): Promise<void> {
+  /**
+   * 카카오 유저 회원가입
+   */
+  async createKakaoUser(user: User): Promise<void> {
     const newUser = new this.userModel(user);
-    const salt = await bcrypt.genSalt();
-    newUser.password = await bcrypt.hash(newUser.password, salt);
+    // const salt = await bcrypt.genSalt();
+    // newUser.password = await bcrypt.hash(newUser.password, salt);
+
+    try {
+      newUser.save();
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  /**
+   * 네이버 유저 회원가입
+   */
+  async createNaverUser(user: User): Promise<void> {
+    const newUser = new this.userModel(user);
+    // const salt = await bcrypt.genSalt();
+    // newUser.password = await bcrypt.hash(newUser.password, salt);
 
     try {
       newUser.save();
