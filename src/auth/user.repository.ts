@@ -41,16 +41,14 @@ export class UserRepository {
   /**
    * 카카오 유저 회원가입
    */
-  async createKakaoUser(user: User): Promise<void> {
+  async createKakaoUser(user: User): Promise<any> {
     const newUser = new this.userModel(user);
-    // const salt = await bcrypt.genSalt();
-    // newUser.password = await bcrypt.hash(newUser.password, salt);
 
     try {
       newUser.save();
     } catch (error) {
       console.log(error);
-      throw new InternalServerErrorException();
+      return error;
     }
   }
 
@@ -59,8 +57,6 @@ export class UserRepository {
    */
   async createNaverUser(user: User): Promise<void> {
     const newUser = new this.userModel(user);
-    // const salt = await bcrypt.genSalt();
-    // newUser.password = await bcrypt.hash(newUser.password, salt);
 
     try {
       newUser.save();

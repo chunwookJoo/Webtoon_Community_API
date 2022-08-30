@@ -1,10 +1,17 @@
-import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  Matches,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 export class AuthCredentialDto {
   kakaoToken: string;
   naverToken: string;
   id: string;
   email: string;
+  profileImage: string;
 
   @IsString()
   @MinLength(2)
@@ -24,4 +31,12 @@ export class AuthCredentialDto {
   //   message: '비밀번호는 영문 또는 숫자만 가능합니다.',
   // })
   // password: string;
+}
+
+export class NicknameDto {
+  @IsString()
+  @MinLength(2)
+  @MaxLength(10)
+  @IsNotEmpty()
+  nickname: string;
 }

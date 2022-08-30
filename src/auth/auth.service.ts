@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AuthCredentialDto } from './dto/auth-credential.dto';
+import { AuthCredentialDto, NicknameDto } from './dto/auth-credential.dto';
 import { UserRepository } from './user.repository';
 // import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
@@ -15,24 +15,6 @@ export class AuthService {
     private userRepository: UserRepository,
     private jwtService: JwtService,
   ) {}
-
-  /**
-   * 카카오 유저 회원가입
-   * @param authCredentialDto
-   * @returns
-   */
-  async kakaoSignUp(authCredentialDto: AuthCredentialDto): Promise<void> {
-    const { kakaoToken, id, email, nickname, age, gender } = authCredentialDto;
-    return this.userRepository.createKakaoUser({
-      kakaoToken,
-      id,
-      email,
-      nickname,
-      age,
-      gender,
-    });
-  }
-
   /**
    * 네이버 유저 회원가입
    * @param authCredentialDto
@@ -50,23 +32,64 @@ export class AuthService {
   //   });
   // }
 
-  // async signIn(
-  //   authCredentialDto: AuthCredentialDto,
-  // ): Promise<{ accessToken: string }> {
-  //   const { username, password } = authCredentialDto;
-  //   const user = await this.userRepository.findOne({ username });
+  /**
+   * 카카오 유저 회원가입
+   * @param body
+   * @returns kakaoToken
+   */
+  async kakaoSignUp(body: AuthCredentialDto): Promise<any> {
+    try {
+      this.userRepository.createKakaoUser(body);
 
-  //   if (user && (await bcrypt.compare(password, user.password))) {
-  //     // 유저 토큰 생성
-  //     const payload = { username };
-  //     const accessToken = await this.jwtService.sign(payload);
+      // 유저 토큰 생성
+      const { id } = body;
+      const payload = { id };
+      const jwtToken = this.jwtService.sign(payload);
+      const data: object = {
+        RESULT: 200,
+        message: '카카오 회원가입 성공',
+        user_data: body,
+        jwtToken: jwtToken,
+      };
+      return data;
+    } catch (error) {
+      return {
+        RESULT: 400,
+        message: '회원가입 실패',
+      };
+    }
+  }
 
-  //     return { accessToken: accessToken };
-  //   } else {
-  //     throw new UnauthorizedException('로그인 실패');
-  //   }
-  // }
+  /**
+   * 닉네임 중복 체크
+   * @param body
+   * @returns
+   */
+  async nicknameCheck(body: NicknameDto): Promise<any> {
+    const { nickname } = body;
+    const user = await this.userRepository.findOne({ nickname });
 
+    // 닉네임이 없으면
+    if (!user) {
+      const data: object = {
+        RESULT: 200,
+        message: '사용할 수 있는 닉네임입니다.',
+      };
+      return data;
+    } else {
+      const data: object = {
+        RESULT: 403,
+        message: '이미 사용중인 닉네임입니다.',
+      };
+      return data;
+    }
+  }
+
+  /**
+   * 카카오 유저 로그인
+   * @param param
+   * @returns
+   */
   async kakaoLogin(param: {
     rest_api_key: string;
     auth_code: string;
@@ -105,19 +128,64 @@ export class AuthService {
           timeout: 30000,
           headers: headerUserInfo,
         });
+        /**
+         * 카카오에서 준 id가 DB에 저장되있는지 확인
+         */
         if (responseUserInfo.status === 200) {
-          const data: object = {
-            access_token: response.data.access_token,
-            user_data: responseUserInfo.data,
-          };
+          const id = responseUserInfo.data.id;
+          const user = await this.userRepository.findOne({ id });
 
-          return data;
+          if (user) {
+            // 유저 토큰 생성
+            const payload = { id };
+            const jwtToken = this.jwtService.sign(payload);
+
+            const data: object = {
+              access_token: response.data.access_token,
+              user_data: user,
+              jwtToken: jwtToken,
+            };
+            return data;
+          } else {
+            const data: object = {
+              access_token: response.data.access_token,
+              user_data: responseUserInfo.data,
+            };
+            return data;
+          }
         } else {
-          throw new UnauthorizedException();
+          throw new UnauthorizedException('로그인 실패');
         }
       }
     } catch (error) {
       console.log(error);
     }
   }
+
+  async getUserByToken(token: string): Promise<User> {
+    return this.userRepository.findOne({ token });
+  }
+
+  // async userLogout(body): Promise<any> {
+  //   const { access_token, admin_key } = body;
+  //   console.log(access_token);
+  //   console.log(admin_key);
+
+  //   const kakaoLogoutUrl = 'https://kapi.kakao.com/v1/user/logout';
+
+  //   try {
+  //     const response = await axios({
+  //       method: 'POST',
+  //       url: kakaoLogoutUrl,
+  //       headers: {
+  //         Authorization: `Bearer ${access_token}/KakaoAK ${admin_key}`,
+  //       },
+  //     });
+  //     console.log(response);
+
+  //     return response;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 }
