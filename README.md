@@ -2,72 +2,37 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# 한국 웹툰 커뮤니티 서비스 "이거 봤어?"
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=000000"/>  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=ffffff"/> <img src="https://img.shields.io/badge/NestJS-646464?style=flat&logo=NestJS&logoColor=db3636"/> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=MongoDB&logoColor=ffffff"/>
 
-## Description
+## 기술 스택
+- NestJS
+- MongoDB
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 프로젝트 기능 설명
+// 개발 완료
 
-## Installation
+1. 각 플랫폼별 (네이버, 카카오, 카카오페이지) 웹툰 리스트를 크롤링하여 DB에 저장 후 출력
+2. Oauth 로그인 (카카오, 네이버), JWT토큰 발급 후 DB 저장
+3. 웹툰 검색 (작품, 작가)
 
-```bash
-$ npm install
+// 개발중
+
+4. 웹툰마다 사용자가 댓글, 좋아요 기능
+5. 웹툰 보러가기 클릭 시 해당 플랫폼으로 이동
+
+## Demo
+아직 배포를 안한 상태입니다. 배포되는대로 올리겠습니다.
+
+## 참고
+**https://github.com/HyeokjaeLee/korea-webtoon-api**
+```
+위 사이트를 많이 참고했습니다.
+사실상 거의 코드는 같지만 위 API를 그대로 쓰는 것이 아닌 제 API를 따로 만들어서 개발했습니다.
+크롤링 부분도 참고를 많이 했습니다. 윗 분의 코드를 보며 하나씩 파헤쳤고 네이버 웹툰의 "신작" 부분을 제가 따로 추가해서 넣었습니다.
+정말 감사드립니다.
 ```
 
-## Running the app
 
-```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
