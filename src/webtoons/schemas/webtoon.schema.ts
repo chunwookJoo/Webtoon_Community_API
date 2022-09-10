@@ -7,18 +7,25 @@ export type WebtoonDocument = Webtoon & Document;
 export class Webtoon {
   @Prop()
   _id: string;
+
   @Prop({ required: true })
   title: string;
+
   @Prop({ required: true })
   author: string;
+
   @Prop({ required: true })
   url: string;
+
   @Prop({ required: true })
   img: string;
+
   @Prop({ required: true })
   service: string;
+
   @Prop({ required: true })
   week: number[];
+  
   @Prop({ required: true, type: Object })
   additional: WebtoonObject.Additional;
 }
