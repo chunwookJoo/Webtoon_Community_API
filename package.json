@@ -93,6 +93,7 @@
     "testEnvironment": "node"
   },
   "engines": {
-    "node": "6.0.0"
+    "node": "18.x",
+    "npm": "8.x"
   }
 }
