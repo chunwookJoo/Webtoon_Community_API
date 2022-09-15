@@ -93,6 +93,6 @@
     "testEnvironment": "node"
   },
   "engines": {
-    "node": "4.1.1"
+    "node": "6.0.0"
   }
 }
