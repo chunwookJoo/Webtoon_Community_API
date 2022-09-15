@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "copy-files": "cpx \"config/*.yaml\" dist/config",
+    "copy-files": "cpx \"config/*.yaml\" dist/config && cpx \"public/*\" dist/public",
     "prebuild": "rimraf dist",
     "build": "npm run copy-files && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -29,6 +29,7 @@
     "@nestjs/mongoose": "^9.2.0",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/serve-static": "^3.0.0",
     "@types/js-yaml": "^4.0.5",
     "@types/passport-jwt": "^3.0.6",
     "axios": "^0.27.2",

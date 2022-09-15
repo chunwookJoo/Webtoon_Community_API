@@ -10,7 +10,7 @@ class WebtoonsController {
   }
   private serviceOption: { service?: string } = {};
   platform: string;
-  @Get()
+  @Get('/')
   async all() {
     return this.webtoonsService.find(this.serviceOption);
   }
