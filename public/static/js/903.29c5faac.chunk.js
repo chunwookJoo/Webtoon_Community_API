@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwebtoon_client=self.webpackChunkwebtoon_client||[]).push([[903],{9903:function(e,n,t){t.r(n);t(2791);var c=t(184);n.default=function(){return(0,c.jsx)("div",{children:(0,c.jsx)("h2",{children:"\uc6f9\ud230 \uc0c1\uc138\ud398\uc774\uc9c0"})})}}}]);
+//# sourceMappingURL=903.29c5faac.chunk.js.map
