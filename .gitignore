@@ -40,4 +40,3 @@ lerna-debug.log*
 # Config
 /config/default.yaml
 /config/development.yaml
-/config/production.yaml
