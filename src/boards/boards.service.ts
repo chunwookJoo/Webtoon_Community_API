@@ -2,9 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { BoardStatus } from './board-status.enum';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardRepository } from './board.repository';
-import { InjectRepository } from '@nestjs/typeorm';
-// import { Board } from './board.entity';
-// import { User } from 'src/auth/user.entity';
 import { Board } from './schema/board.schema';
 import { v4 as uuidv4 } from 'uuid';
 

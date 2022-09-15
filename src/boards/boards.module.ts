@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardsController } from './boards.controller';
 import { BoardRepository } from './board.repository';
 import { BoardsService } from './boards.service';
@@ -11,7 +10,6 @@ import { BoardSchema } from './schema/board.schema';
 // import { Board, BoardSchema } from './schema/board.shema';
 
 @Module({
-  // imports: [TypeOrmModule.forFeature([BoardRepository]), AuthModule],
   imports: [
     MongooseModule.forFeature([{ name: Board.name, schema: BoardSchema }]),
   ],

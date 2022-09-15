@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
-// import { User } from 'src/auth/user.entity';
-import { EntityRepository, Repository } from 'typeorm';
 import { BoardStatus } from './board-status.enum';
-// import { Board } from './board.entity';
 import { Board } from './schema/board.schema';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardDocument } from './schema/board.schema';

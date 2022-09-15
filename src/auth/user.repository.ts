@@ -3,8 +3,6 @@ import {
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
-// import { EntityRepository, Repository } from 'typeorm';
-import { AuthCredentialDto } from './dto/auth-credential.dto';
 // import { User } from './user.entity';
 import { User, UserDocument } from './schema/user.schema';
 // import * as bcrypt from 'bcryptjs';
