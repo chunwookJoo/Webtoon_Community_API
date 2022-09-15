@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
-import * as config from 'config';
+// import * as config from 'config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,9 +12,9 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  const serverConfig = config.get('server');
-
-  await app.listen(serverConfig.port);
-  console.log(`listening on port ${serverConfig.port}`);
+  const configService = app.get(ConfigService);
+  const PORT = configService.get<string>('server.port');
+  await app.listen(PORT);
+  console.log(`listening on port ${PORT}`);
 }
 bootstrap();
