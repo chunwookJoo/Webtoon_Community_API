@@ -9,16 +9,18 @@ import { UserRepository } from './user.repository';
 import * as config from 'config';
 import { User, UserSchema } from './schema/user.schema';
 
-const jwtConfig = config.get('jwt');
+// const jwtConfig = config.get('jwt');
 
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     JwtModule.register({
-      secret: process.env.JWT_SECRET || jwtConfig.secret,
+      // secret: process.env.JWT_SECRET || jwtConfig.secret,
+      secret: process.env.JWT_SECRET,
       signOptions: {
-        expiresIn: jwtConfig.expiresIn,
+        // expiresIn: jwtConfig.expiresIn,
+        expiresIn: process.env.JWT_EXPIRESIN,
       },
     }),
   ],

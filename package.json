@@ -22,6 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
@@ -39,6 +40,9 @@
     "class-validator": "^0.13.2",
     "config": "^3.3.7",
     "cpx": "^1.5.0",
+    "dotenv": "^16.0.2",
+    "g": "^2.0.1",
+    "heroku-dotenv": "^0.4.1",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "mongoose": "^6.5.1",
