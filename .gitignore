@@ -38,5 +38,5 @@ lerna-debug.log*
 .env
 
 # Config
-/config/default.yaml
-/config/development.yaml
+# /config/default.yaml
+# /config/development.yaml

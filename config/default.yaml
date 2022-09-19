@@ -1,0 +1,12 @@
+# server:
+#   port: 3030
+
+db:
+  # type: 'mysql'
+  # port: 3306
+  type: 'mongo'
+  port: 27017
+  database: 'webtoon_forum'
+
+jwt:
+  expiresIn: 3600
