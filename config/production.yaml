@@ -2,7 +2,7 @@ server:
   port: 5000
 
 db:
-  host: 'localhost'
+  host: 'korea-webtoon-review.herokuapp.com'
   # username: 'root'
   # password: 'root'
   username: 'JooChunWook'
