@@ -15,7 +15,7 @@ import { join } from 'path';
     //   load: [config],
     //   isGlobal: true,
     // }),
-    MongooseModule.forRoot(process.env.MONGO_DB_URI, {
+    MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
