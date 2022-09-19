@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "copy-files": "cpx \"config/config.ts\" dist/config && cpx \"public/**\" dist/public",
+    "copy-files": "cpx \"public/**\" dist/public",
     "prebuild": "rimraf dist",
     "build": "npm run copy-files && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
