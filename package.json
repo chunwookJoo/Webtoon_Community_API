@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "copy-files": "cpx \"public/**\" dist/public",
+    "prestart:prod": "rimraf dist && npm run build",
     "prebuild": "rimraf dist",
     "build": "npm run copy-files && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
