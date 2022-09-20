@@ -99,5 +99,6 @@
   "engines": {
     "node": "18.x",
     "npm": "8.x"
-  }
+  },
+  "proxy": "https://webtoon-review.netlify.app"
 }
