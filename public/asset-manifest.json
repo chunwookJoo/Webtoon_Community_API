@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.aa8ba55a.css",
-    "main.js": "/static/js/main.9304c5d4.js",
+    "main.js": "/static/js/main.c1ba7bce.js",
     "static/css/384.75d431dc.chunk.css": "/static/css/384.75d431dc.chunk.css",
     "static/js/384.70e61f42.chunk.js": "/static/js/384.70e61f42.chunk.js",
     "static/js/903.29c5faac.chunk.js": "/static/js/903.29c5faac.chunk.js",
@@ -18,7 +18,7 @@
     "static/media/kakaopage.svg": "/static/media/kakaopage.4c045110db51984163599bc6ba0dceea.svg",
     "index.html": "/index.html",
     "main.aa8ba55a.css.map": "/static/css/main.aa8ba55a.css.map",
-    "main.9304c5d4.js.map": "/static/js/main.9304c5d4.js.map",
+    "main.c1ba7bce.js.map": "/static/js/main.c1ba7bce.js.map",
     "384.75d431dc.chunk.css.map": "/static/css/384.75d431dc.chunk.css.map",
     "384.70e61f42.chunk.js.map": "/static/js/384.70e61f42.chunk.js.map",
     "903.29c5faac.chunk.js.map": "/static/js/903.29c5faac.chunk.js.map",
@@ -31,6 +31,6 @@
   },
   "entrypoints": [
     "static/css/main.aa8ba55a.css",
-    "static/js/main.9304c5d4.js"
+    "static/js/main.c1ba7bce.js"
   ]
 }
