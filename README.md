@@ -23,7 +23,7 @@
 5. 웹툰 보러가기 클릭 시 해당 플랫폼으로 이동
 
 ## Demo
-아직 배포를 안한 상태입니다. 배포되는대로 올리겠습니다.
+https://webtoon-review.netlify.app/
 
 ## 참고
 **https://github.com/HyeokjaeLee/korea-webtoon-api**
