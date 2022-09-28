@@ -23,7 +23,7 @@
 5. 웹툰 보러가기 클릭 시 해당 플랫폼으로 이동
 
 ## Demo
-https://github.com/chunwookJoo/Korea_Webtoon_Forum
+https://github.com/chunwookJoo/Korea_Webtoon_Forum <br/>
 데모 사이트 배포 준비중
 
 ## 참고
