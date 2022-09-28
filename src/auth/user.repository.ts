@@ -64,6 +64,19 @@ export class UserRepository {
     }
   }
 
+  // async insertMyWebtoon(id: string, body: any): Promise<void> {
+  //   const user = await this.findOne({ id });
+  //   console.log(user);
+
+  //   try {
+  //     // myWebtoon.save();
+  //     user.myWebtoon = body;
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw new InternalServerErrorException();
+  //   }
+  // }
+
   async findOne(userFilterQuery: FilterQuery<User>): Promise<User> {
     return this.userModel.findOne(userFilterQuery);
   }

@@ -11,12 +11,16 @@ import {
   Res,
   UseGuards,
   ValidationPipe,
+  UploadedFiles,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FilesInterceptor } from '@nestjs/platform-express/multer';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { AuthCredentialDto, NicknameDto } from './dto/auth-credential.dto';
 import { Request, Response } from 'express';
 import { User } from './schema/user.schema';
+import { multerOptions } from 'src/common/multerOptions';
 
 @Controller('auth')
 export class AuthController {
@@ -132,6 +136,21 @@ export class AuthController {
     return this.authService.getUserById(id);
   }
 
+  @UseInterceptors(FilesInterceptor('images', null, multerOptions))
+  @Post('/userinfo/profileimg/upload')
+  async uploadProfileImg(@UploadedFiles() files: File[]) {
+    const uploadedFiles = this.authService.uploadProfileImg(files);
+    console.log(uploadedFiles);
+
+    return {
+      status: 200,
+      message: '이미지 업로드 성공',
+      data: {
+        files: uploadedFiles,
+      },
+    };
+  }
+
   @Post('/userinfo/update/:id')
   async patchUserById(
     @Param('id') id: string,
@@ -153,6 +172,23 @@ export class AuthController {
       console.log(error);
     }
   }
+
+  // @Post('/insert/mywebtoon/:id')
+  // async insertMyWebtoon(
+  //   @Param('id') id: string,
+  //   @Body() body: any,
+  //   @Res() res: Response,
+  // ): Promise<void> {
+  //   try {
+  //     const result = await this.authService.insertMyWebtoon(id, body);
+  //     res.send(result);
+  //   } catch (error) {
+  //     res.send({
+  //       RESULT: 403,
+  //       message: '마이웹툰 저장 실패',
+  //     });
+  //   }
+  // }
 
   // @Post('/user/logout')
   // async userLogout(@Body() body): Promise<void> {

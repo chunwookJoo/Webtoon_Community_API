@@ -5,6 +5,8 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { ObjectId } from 'mongoose';
+import { Webtoon } from 'src/webtoons/schemas/webtoon.schema';
 
 export class AuthCredentialDto {
   kakaoToken: string;
@@ -23,6 +25,8 @@ export class AuthCredentialDto {
 
   @IsString()
   gender: string;
+
+  myWebtoon: Webtoon;
 
   // @IsString()
   // @MinLength(4)

@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { User } from './schema/user.schema';
 import axios from 'axios';
 import * as qs from 'qs';
+import { createImageURL } from 'src/common/multerOptions';
 
 @Injectable()
 export class AuthService {
@@ -222,9 +223,24 @@ export class AuthService {
     return this.userRepository.findOne({ id });
   }
 
+  uploadProfileImg(files: File[]): string[] {
+    const generatedFiles: string[] = [];
+
+    for (const file of files) {
+      console.log(createImageURL(file));
+      generatedFiles.push(createImageURL(file));
+    }
+
+    return generatedFiles;
+  }
+
   async updateUserById(id: string, body: any): Promise<User> {
     return this.userRepository.updateUserById(id, body);
   }
+
+  // async insertMyWebtoon(id: string, body: any): Promise<void> {
+  //   return this.userRepository.insertMyWebtoon(id, body);
+  // }
 
   // async userLogout(body): Promise<any> {
   //   const { access_token, admin_key } = body;
