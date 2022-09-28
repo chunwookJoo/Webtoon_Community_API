@@ -71,4 +71,22 @@ export class UserRepository {
   async find(usersFilterQuery: FilterQuery<User>): Promise<User[]> {
     return this.userModel.find(usersFilterQuery);
   }
+
+  async updateUserById(id: string, body: any): Promise<User> {
+    const post = await this.findOne({ id });
+
+    post.profileImage = body.profileImage;
+    post.nickname = body.nickname;
+    post.age = body.age;
+    post.gender = body.gender;
+
+    const updateUser = new this.userModel(post);
+    try {
+      updateUser.save();
+      return updateUser;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
 }

@@ -222,6 +222,10 @@ export class AuthService {
     return this.userRepository.findOne({ id });
   }
 
+  async updateUserById(id: string, body: any): Promise<User> {
+    return this.userRepository.updateUserById(id, body);
+  }
+
   // async userLogout(body): Promise<any> {
   //   const { access_token, admin_key } = body;
   //   console.log(access_token);

@@ -4,7 +4,9 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
+  Put,
   Req,
   Res,
   UseGuards,
@@ -128,6 +130,28 @@ export class AuthController {
   @Get('/userinfo/:id')
   async getUserById(@Param('id') id: string): Promise<User> {
     return this.authService.getUserById(id);
+  }
+
+  @Post('/userinfo/update/:id')
+  async patchUserById(
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res() res: Response,
+  ): Promise<void> {
+    const result = await this.authService.updateUserById(id, body);
+    try {
+      res.send({
+        user: result,
+        RESULT: 200,
+        message: '유저 정보 변경 성공',
+      });
+    } catch (error) {
+      res.send({
+        RESULT: 400,
+        message: '유저 정보 변경 실패',
+      });
+      console.log(error);
+    }
   }
 
   // @Post('/user/logout')
