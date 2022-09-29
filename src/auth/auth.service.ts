@@ -223,15 +223,16 @@ export class AuthService {
     return this.userRepository.findOne({ id });
   }
 
-  uploadProfileImg(files: File[]): string[] {
+  async uploadProfileImg(id: string, file: File[]): Promise<User> {
     const generatedFiles: string[] = [];
-
-    for (const file of files) {
-      console.log(createImageURL(file));
-      generatedFiles.push(createImageURL(file));
+    // const generatedFiles: string = createImageURL(file);
+    for (const item of file) {
+      generatedFiles.push(createImageURL(item));
     }
 
-    return generatedFiles;
+    console.log(generatedFiles[0]);
+    return this.userRepository.updateUserImgById(id, generatedFiles[0]);
+    // return generatedFiles;
   }
 
   async updateUserById(id: string, body: any): Promise<User> {

@@ -15,7 +15,7 @@ async function bootstrap() {
     }),
   );
   app.useStaticAssets(join(__dirname, '../public'), {
-    prefix: '/public/images',
+    prefix: 'public',
   });
   // const configService = app.get(ConfigService);
   // const PORT = configService.get<string>('server.port') || process.env.PORT;

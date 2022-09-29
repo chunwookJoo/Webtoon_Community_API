@@ -137,22 +137,21 @@ export class AuthController {
   }
 
   @UseInterceptors(FilesInterceptor('images', null, multerOptions))
-  @Post('/userinfo/profileimg/upload')
-  async uploadProfileImg(@UploadedFiles() files: File[]) {
-    const uploadedFiles = this.authService.uploadProfileImg(files);
-    console.log(uploadedFiles);
+  @Post('/userinfo/profileimg/upload/:id')
+  async uploadProfileImg(
+    @UploadedFiles() file: File[],
+    @Param('id') id: string,
+  ) {
+    this.authService.uploadProfileImg(id, file);
 
     return {
       status: 200,
       message: '이미지 업로드 성공',
-      data: {
-        files: uploadedFiles,
-      },
     };
   }
 
   @Post('/userinfo/update/:id')
-  async patchUserById(
+  async updateUserById(
     @Param('id') id: string,
     @Body() body: any,
     @Res() res: Response,

@@ -88,12 +88,26 @@ export class UserRepository {
   async updateUserById(id: string, body: any): Promise<User> {
     const post = await this.findOne({ id });
 
-    post.profileImage = body.profileImage;
     post.nickname = body.nickname;
     post.age = body.age;
     post.gender = body.gender;
 
     const updateUser = new this.userModel(post);
+    try {
+      updateUser.save();
+      return updateUser;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  async updateUserImgById(id: string, file: string): Promise<User> {
+    const post = await this.findOne({ id });
+
+    post.profileImage = file;
+    const updateUser = new this.userModel(post);
+
     try {
       updateUser.save();
       return updateUser;
