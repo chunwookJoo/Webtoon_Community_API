@@ -17,4 +17,8 @@ export class WebtoonsService {
   async find(option: object) {
     return this.webtoonModel.find(option);
   }
+
+  async getWebtoon(id: string) {
+    return this.webtoonModel.findById(id);
+  }
 }

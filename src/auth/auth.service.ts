@@ -225,23 +225,20 @@ export class AuthService {
 
   async uploadProfileImg(id: string, file: File[]): Promise<User> {
     const generatedFiles: string[] = [];
-    // const generatedFiles: string = createImageURL(file);
     for (const item of file) {
       generatedFiles.push(createImageURL(item));
     }
 
-    console.log(generatedFiles[0]);
     return this.userRepository.updateUserImgById(id, generatedFiles[0]);
-    // return generatedFiles;
   }
 
   async updateUserById(id: string, body: any): Promise<User> {
     return this.userRepository.updateUserById(id, body);
   }
 
-  // async insertMyWebtoon(id: string, body: any): Promise<void> {
-  //   return this.userRepository.insertMyWebtoon(id, body);
-  // }
+  async insertMyWebtoon(id: string, body: any): Promise<void> {
+    return this.userRepository.insertMyWebtoon(id, body);
+  }
 
   // async userLogout(body): Promise<any> {
   //   const { access_token, admin_key } = body;

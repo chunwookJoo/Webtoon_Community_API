@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { WebtoonsService } from './webtoons.service';
 import { removeSpecialChars } from 'src/functions/common-function';
 class WebtoonsController {
@@ -79,6 +79,11 @@ export class SearchController {
           'Required request variable does not exist or request variable name is invalid.',
         error: 'Error',
       };
+  }
+
+  @Get('webtoon/:id')
+  async getWebtoon(@Param('id') id: string) {
+    return this.webtoonsService.getWebtoon(id);
   }
 }
 

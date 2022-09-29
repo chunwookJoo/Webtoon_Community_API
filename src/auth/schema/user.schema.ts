@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 // import mongoose, { Document, ObjectId, Types } from 'mongoose';
-import { Document, Types, Schema as MongooseSchema } from 'mongoose';
+import mongoose, { Document, Types, Schema as MongooseSchema } from 'mongoose';
 import { Webtoon } from 'src/webtoons/schemas/webtoon.schema';
 
 export type UserDocument = User & Document;
@@ -30,8 +30,8 @@ export class User {
   @Prop({ required: true })
   gender: string;
 
-  // @Prop({ type: Object })
-  // myWebtoon: Object;
+  @Prop()
+  myWebtoon: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

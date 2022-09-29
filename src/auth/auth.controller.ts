@@ -172,22 +172,25 @@ export class AuthController {
     }
   }
 
-  // @Post('/insert/mywebtoon/:id')
-  // async insertMyWebtoon(
-  //   @Param('id') id: string,
-  //   @Body() body: any,
-  //   @Res() res: Response,
-  // ): Promise<void> {
-  //   try {
-  //     const result = await this.authService.insertMyWebtoon(id, body);
-  //     res.send(result);
-  //   } catch (error) {
-  //     res.send({
-  //       RESULT: 403,
-  //       message: '마이웹툰 저장 실패',
-  //     });
-  //   }
-  // }
+  @Post('/insert/mywebtoon/:id')
+  async insertMyWebtoon(
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res() res: Response,
+  ): Promise<void> {
+    const result = await this.authService.insertMyWebtoon(id, body);
+    try {
+      res.send({
+        RESULT: 200,
+        message: '마이웹툰 저장 성공',
+      });
+    } catch (error) {
+      res.send({
+        RESULT: 403,
+        message: '마이웹툰 저장 실패',
+      });
+    }
+  }
 
   // @Post('/user/logout')
   // async userLogout(@Body() body): Promise<void> {

@@ -64,18 +64,23 @@ export class UserRepository {
     }
   }
 
-  // async insertMyWebtoon(id: string, body: any): Promise<void> {
-  //   const user = await this.findOne({ id });
-  //   console.log(user);
+  /**
+   * 마이웹툰 저장
+   * @param id
+   * @param body
+   */
+  async insertMyWebtoon(id: string, body: any): Promise<void> {
+    const user = await this.findOne({ id });
+    user.myWebtoon.push(body);
+    const updateUser = new this.userModel(user);
 
-  //   try {
-  //     // myWebtoon.save();
-  //     user.myWebtoon = body;
-  //   } catch (error) {
-  //     console.log(error);
-  //     throw new InternalServerErrorException();
-  //   }
-  // }
+    try {
+      updateUser.save();
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException();
+    }
+  }
 
   async findOne(userFilterQuery: FilterQuery<User>): Promise<User> {
     return this.userModel.findOne(userFilterQuery);
@@ -85,6 +90,12 @@ export class UserRepository {
     return this.userModel.find(usersFilterQuery);
   }
 
+  /**
+   * id로 찾고 유저정보 업데이트
+   * @param id
+   * @param body
+   * @returns 업데이트된 유저정보
+   */
   async updateUserById(id: string, body: any): Promise<User> {
     const post = await this.findOne({ id });
 
@@ -102,6 +113,12 @@ export class UserRepository {
     }
   }
 
+  /**
+   * id로 찾고 프로필사진 업데이트
+   * @param id
+   * @param file
+   * @returns 업데이트된 유저정보
+   */
   async updateUserImgById(id: string, file: string): Promise<User> {
     const post = await this.findOne({ id });
 
