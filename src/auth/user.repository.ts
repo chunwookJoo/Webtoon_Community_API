@@ -64,24 +64,6 @@ export class UserRepository {
     }
   }
 
-  /**
-   * 마이웹툰 저장
-   * @param id
-   * @param body
-   */
-  async insertMyWebtoon(id: string, body: any): Promise<void> {
-    const user = await this.findOne({ id });
-    user.myWebtoon.push(body);
-    const updateUser = new this.userModel(user);
-
-    try {
-      updateUser.save();
-    } catch (error) {
-      console.log(error);
-      throw new InternalServerErrorException();
-    }
-  }
-
   async findOne(userFilterQuery: FilterQuery<User>): Promise<User> {
     return this.userModel.findOne(userFilterQuery);
   }
@@ -131,6 +113,65 @@ export class UserRepository {
     } catch (error) {
       console.log(error);
       return error;
+    }
+  }
+
+  /**
+   * 마이웹툰 저장
+   * @param id userId
+   * @param body webtoonId
+   */
+  async insertMyWebtoon(id: string, body: any): Promise<Object> {
+    const user = await this.findOne({ id });
+    const webtoonId = body._id;
+
+    if (user.myWebtoon.includes(webtoonId)) {
+      return {
+        RESULT: 403,
+        message: '마이 웹툰에 이미 저장되어있습니다.',
+      };
+    } else {
+      user.myWebtoon.push(webtoonId);
+      const updateUser = new this.userModel(user);
+
+      try {
+        updateUser.save();
+        return {
+          RESULT: 200,
+          message: '마이 웹툰 저장 성공',
+        };
+      } catch (error) {
+        console.log(error);
+        throw new InternalServerErrorException();
+      }
+    }
+  }
+
+  /**
+   * 마이웹툰 삭제
+   * @param id userId
+   * @param body webtoonId
+   */
+  async deleteMyWebtoon(id: string, body: any): Promise<Object> {
+    const user = await this.findOne({ id });
+    const webtoonId = body._id;
+
+    if (user.myWebtoon.includes(webtoonId)) {
+      user.myWebtoon.splice(user.myWebtoon.indexOf(webtoonId), 1);
+      const updateUser = new this.userModel(user);
+      try {
+        updateUser.save();
+        return {
+          RESULT: 200,
+          message: '마이 웹툰 삭제 성공',
+          user: updateUser,
+        };
+      } catch (error) {
+        console.log(error);
+        throw new InternalServerErrorException();
+      }
+    } else {
+      console.log('해당하는 웹툰 없음');
     }
   }
 }

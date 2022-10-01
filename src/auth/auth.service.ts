@@ -236,8 +236,12 @@ export class AuthService {
     return this.userRepository.updateUserById(id, body);
   }
 
-  async insertMyWebtoon(id: string, body: any): Promise<void> {
+  async insertMyWebtoon(id: string, body: any): Promise<Object> {
     return this.userRepository.insertMyWebtoon(id, body);
+  }
+
+  async deleteMyWebtoon(id: string, body: any): Promise<Object> {
+    return this.userRepository.deleteMyWebtoon(id, body);
   }
 
   // async userLogout(body): Promise<any> {
