@@ -34,6 +34,7 @@ namespace WebtoonObject {
   interface Dto extends Basic {
     _id: string;
     week: number[];
+    comments: string[];
     additional: Additional;
   }
 }

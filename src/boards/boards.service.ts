@@ -5,6 +5,23 @@ import { BoardRepository } from './board.repository';
 import { Board } from './schema/board.schema';
 import { v4 as uuidv4 } from 'uuid';
 
+@Injectable()
+export class BoardsService {
+  constructor(private boardRepository: BoardRepository) {}
+
+  async createBoard(title: string, description: string): Promise<Board> {
+    return this.boardRepository.createBoard({
+      id: uuidv4(),
+      title,
+      description,
+    });
+  }
+
+  async getAllBoards(): Promise<Board[]> {
+    return this.boardRepository.find();
+  }
+}
+
 // @Injectable()
 // export class BoardsService {
 //   constructor(
@@ -46,20 +63,3 @@ import { v4 as uuidv4 } from 'uuid';
 //     return this.boardRepository.find();
 //   }
 // }
-
-@Injectable()
-export class BoardsService {
-  constructor(private boardRepository: BoardRepository) {}
-
-  async createBoard(title: string, description: string): Promise<Board> {
-    return this.boardRepository.createBoard({
-      id: uuidv4(),
-      title,
-      description,
-    });
-  }
-
-  async getAllBoards(): Promise<Board[]> {
-    return this.boardRepository.find();
-  }
-}

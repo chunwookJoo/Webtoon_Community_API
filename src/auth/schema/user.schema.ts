@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-// import mongoose, { Document, ObjectId, Types } from 'mongoose';
 import mongoose, { Document, Types, Schema as MongooseSchema } from 'mongoose';
-import { Webtoon } from 'src/webtoons/schemas/webtoon.schema';
 
 export type UserDocument = User & Document;
 @Schema()
@@ -36,9 +34,8 @@ export class User {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-// UserSchema.virtual('webtoon', {
-//   ref: 'Webtoon',
-//   localField: 'myWebtoon',
-//   foreignField: '_id',
-//   justOne: true,
-// });
+UserSchema.virtual('comments', {
+  ref: 'Comments',
+  localField: '_id',
+  foreignField: 'author',
+});

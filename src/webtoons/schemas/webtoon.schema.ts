@@ -25,7 +25,7 @@ export class Webtoon {
 
   @Prop({ required: true })
   week: number[];
-  
+
   @Prop({ required: true, type: Object })
   additional: WebtoonObject.Additional;
 }
