@@ -1,4 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 export class CreateBoardDto {
   @IsNotEmpty()
@@ -6,4 +7,9 @@ export class CreateBoardDto {
 
   @IsNotEmpty()
   description: string;
+
+  @IsNotEmpty()
+  author: ObjectId;
+
+  webtoon: ObjectId;
 }

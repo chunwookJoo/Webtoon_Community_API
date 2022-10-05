@@ -12,6 +12,8 @@ export class BoardsController {
     return this.boardsService.createBoard(
       createboardDto.title,
       createboardDto.description,
+      createboardDto.author,
+      createboardDto.webtoon,
     );
   }
 }

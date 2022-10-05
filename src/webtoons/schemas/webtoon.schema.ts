@@ -31,3 +31,10 @@ export class Webtoon {
 }
 
 export const WebtoonSchema = SchemaFactory.createForClass(Webtoon);
+
+// WebtoonSchema.virtual('comment', {
+//   ref: 'comments',
+//   localField: '_id',
+//   foreignField: 'id',
+//   justOne: false,
+// });

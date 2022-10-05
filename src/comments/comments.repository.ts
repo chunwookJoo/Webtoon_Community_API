@@ -1,25 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
-import { Comments } from './schema/comments.schema';
+import { Comment } from './schema/comments.schema';
 import { CommentsDocument } from './schema/comments.schema';
 
 @Injectable()
 export class CommentsRepository {
   constructor(
-    @InjectModel(Comments.name) private commentsModel: Model<CommentsDocument>,
+    @InjectModel(Comment.name) private commentsModel: Model<CommentsDocument>,
   ) {}
 
-  async createComment(comments: Comments): Promise<Comments> {
-    const newComment = new this.commentsModel(comments);
+  async createComment(comment: Comment): Promise<Comment> {
+    const newComment = new this.commentsModel(comment);
     return newComment.save();
   }
 
-  async findOne(userFilterQuery: FilterQuery<Comments>): Promise<Comments> {
+  async findOne(userFilterQuery: FilterQuery<Comment>): Promise<Comment> {
     return this.commentsModel.findOne(userFilterQuery);
   }
 
-  async find(): Promise<Comments[]> {
+  async find(): Promise<Comment[]> {
     return this.commentsModel.find();
   }
 }

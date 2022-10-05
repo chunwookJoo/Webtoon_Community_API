@@ -1,26 +1,29 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CommentsRepository } from './comments.repository';
-import { Comments } from './schema/comments.schema';
+import { Comment } from './schema/comments.schema';
 import { v4 as uuidv4 } from 'uuid';
+import { ObjectId } from 'mongoose';
 
 @Injectable()
 export class CommentsService {
   constructor(private commentsRepository: CommentsRepository) {}
 
   async createComment(
+    board_id: any,
     comment: string,
-    author: string,
+    author: any,
     createdAt: Date,
-  ): Promise<Comments> {
+  ): Promise<Comment> {
     return this.commentsRepository.createComment({
       id: uuidv4(),
+      board_id,
       comment,
       author,
       createdAt,
     });
   }
 
-  async getAllComments(): Promise<Comments[]> {
+  async getAllComments(): Promise<Comment[]> {
     return this.commentsRepository.find();
   }
 }

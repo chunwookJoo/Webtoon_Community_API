@@ -9,11 +9,18 @@ import { v4 as uuidv4 } from 'uuid';
 export class BoardsService {
   constructor(private boardRepository: BoardRepository) {}
 
-  async createBoard(title: string, description: string): Promise<Board> {
+  async createBoard(
+    title: string,
+    description: string,
+    author: any,
+    webtoon: any,
+  ): Promise<Board> {
     return this.boardRepository.createBoard({
       id: uuidv4(),
       title,
       description,
+      author,
+      webtoon,
     });
   }
 
