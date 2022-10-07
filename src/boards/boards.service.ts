@@ -16,7 +16,6 @@ export class BoardsService {
     webtoon: any,
   ): Promise<Board> {
     return this.boardRepository.createBoard({
-      id: uuidv4(),
       title,
       description,
       author,
@@ -26,6 +25,10 @@ export class BoardsService {
 
   async getAllBoards(): Promise<Board[]> {
     return this.boardRepository.find();
+  }
+
+  async getBoardById(_id: string): Promise<Board> {
+    return this.boardRepository.findOne({ _id });
   }
 }
 

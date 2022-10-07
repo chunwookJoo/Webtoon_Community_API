@@ -7,37 +7,23 @@ import { Webtoon } from 'src/webtoons/schemas/webtoon.schema';
 export type BoardDocument = Board & Document;
 @Schema()
 export class Board {
-  @Prop()
-  id: string;
-
   @Prop({ required: true })
   title: string;
 
   @Prop({ required: true })
   description: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-  author: User;
+  @Prop({ required: true, ref: 'User' })
+  author: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Webtoon' })
-  webtoon: Webtoon;
+  @Prop({
+    required: true,
+    ref: 'Webtoon',
+  })
+  webtoon: string;
 }
 
 export const BoardSchema = SchemaFactory.createForClass(Board);
-
-// BoardSchema.virtual('user', {
-//   ref: 'users',
-//   localField: 'author',
-//   foreignField: 'id',
-//   justOne: true,
-// });
-
-// BoardSchema.virtual('webtoon', {
-//   ref: 'webtoons',
-//   localField: 'webtoon_id',
-//   foreignField: '_id',
-//   justOne: true,
-// });
 
 // BoardSchema.virtual('comment', {
 //   ref: 'comments',

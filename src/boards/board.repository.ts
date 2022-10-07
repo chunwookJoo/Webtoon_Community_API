@@ -38,11 +38,14 @@ export class BoardRepository {
     return newBoard.save();
   }
 
-  async findOne(userFilterQuery: FilterQuery<Board>): Promise<Board> {
-    return this.boardModel.findOne(userFilterQuery);
+  async find(): Promise<Board[]> {
+    return this.boardModel.find().populate('author').populate('webtoon');
   }
 
-  async find(): Promise<Board[]> {
-    return this.boardModel.find();
+  async findOne(userFilterQuery: FilterQuery<Board>): Promise<Board> {
+    return this.boardModel
+      .findById(userFilterQuery)
+      .populate('author')
+      .populate('webtoon');
   }
 }

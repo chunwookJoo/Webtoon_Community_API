@@ -1,13 +1,13 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Board } from './schema/board.schema';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 
-@Controller('boards')
+@Controller('board')
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
-  @Post()
+  @Post('/create')
   async createBoard(@Body() createboardDto: CreateBoardDto): Promise<Board> {
     return this.boardsService.createBoard(
       createboardDto.title,
@@ -15,6 +15,16 @@ export class BoardsController {
       createboardDto.author,
       createboardDto.webtoon,
     );
+  }
+
+  @Get()
+  async getAllBoards(): Promise<Board[]> {
+    return this.boardsService.getAllBoards();
+  }
+
+  @Get('/:id')
+  async getBoardById(@Param('id') _id: string): Promise<Board> {
+    return this.boardsService.getBoardById(_id);
   }
 }
 

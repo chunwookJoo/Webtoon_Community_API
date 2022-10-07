@@ -9,7 +9,8 @@ export class CreateBoardDto {
   description: string;
 
   @IsNotEmpty()
-  author: ObjectId;
+  author: string;
 
-  webtoon: ObjectId;
+  @IsNotEmpty()
+  webtoon: string;
 }
