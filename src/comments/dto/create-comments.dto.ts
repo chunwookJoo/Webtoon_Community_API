@@ -1,14 +1,15 @@
 import { IsNotEmpty } from 'class-validator';
 
 export class CreateCommentsDto {
-  id: string;
-
+  @IsNotEmpty()
   board_id: string;
 
   @IsNotEmpty()
   comment: string;
 
+  @IsNotEmpty()
   author: string;
 
+  @IsNotEmpty()
   createdAt: Date;
 }

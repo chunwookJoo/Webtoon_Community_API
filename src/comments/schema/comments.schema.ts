@@ -6,19 +6,16 @@ import { Board } from 'src/boards/schema/board.schema';
 export type CommentsDocument = Comment & Document;
 @Schema()
 export class Comment {
-  @Prop()
-  id: string;
-
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Board' })
-  board_id: Board;
+  @Prop({ required: true, ref: 'Board' })
+  board_id: string;
 
   @Prop({ required: true })
   comment: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-  author: User;
+  @Prop({ required: true, ref: 'User' })
+  author: string;
 
-  @Prop()
+  @Prop({ default: Date.now })
   createdAt: Date;
 }
 

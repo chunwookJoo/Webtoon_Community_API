@@ -8,22 +8,11 @@ import { ObjectId } from 'mongoose';
 export class CommentsService {
   constructor(private commentsRepository: CommentsRepository) {}
 
-  async createComment(
-    board_id: any,
-    comment: string,
-    author: any,
-    createdAt: Date,
-  ): Promise<Comment> {
-    return this.commentsRepository.createComment({
-      id: uuidv4(),
-      board_id,
-      comment,
-      author,
-      createdAt,
-    });
+  async createComment(commentBody: any): Promise<void> {
+    return this.commentsRepository.createComment(commentBody);
   }
 
-  async getAllComments(): Promise<Comment[]> {
-    return this.commentsRepository.find();
+  async getAllComments(boardId: string): Promise<Comment> {
+    return this.commentsRepository.findByBoardId(boardId);
   }
 }

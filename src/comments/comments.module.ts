@@ -13,4 +13,4 @@ import { CommentsController } from './comments.controller';
   controllers: [CommentsController],
   providers: [CommentsService, CommentsRepository],
 })
-export class BoardsModule {}
+export class CommentsModule {}

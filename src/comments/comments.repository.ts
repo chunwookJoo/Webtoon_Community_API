@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
 import { Comment } from './schema/comments.schema';
@@ -10,17 +10,28 @@ export class CommentsRepository {
     @InjectModel(Comment.name) private commentsModel: Model<CommentsDocument>,
   ) {}
 
-  async createComment(comment: Comment): Promise<Comment> {
-    const newComment = new this.commentsModel(comment);
-    return newComment.save();
+  async createComment(commentBody: any): Promise<void> {
+    const newComment = new this.commentsModel(commentBody);
+
+    try {
+      newComment.save();
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException();
+    }
   }
 
   async findOne(userFilterQuery: FilterQuery<Comment>): Promise<Comment> {
     return this.commentsModel.findOne(userFilterQuery);
   }
 
-  async find(): Promise<Comment[]> {
-    return this.commentsModel.find();
+  async findByBoardId(boardId: string): Promise<any> {
+    const comments = this.commentsModel
+      .find()
+      .where('board_id')
+      .equals(boardId)
+      .populate('author');
+    return comments;
   }
 }
 
