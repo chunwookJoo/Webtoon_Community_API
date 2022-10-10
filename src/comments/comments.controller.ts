@@ -8,7 +8,7 @@ export class CommentsController {
   constructor(private commentsService: CommentsService) {}
 
   @Post('/insert')
-  async createComment(@Body() commentBody: CreateCommentsDto): Promise<void> {
+  async createComment(@Body() commentBody: CreateCommentsDto): Promise<Object> {
     return this.commentsService.createComment(commentBody);
   }
 

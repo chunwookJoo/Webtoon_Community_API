@@ -8,7 +8,7 @@ import { ObjectId } from 'mongoose';
 export class CommentsService {
   constructor(private commentsRepository: CommentsRepository) {}
 
-  async createComment(commentBody: any): Promise<void> {
+  async createComment(commentBody: any): Promise<Object> {
     return this.commentsRepository.createComment(commentBody);
   }
 
