@@ -13,4 +13,7 @@ export class CreateBoardDto {
 
   @IsNotEmpty()
   webtoon: string;
+
+  @IsNotEmpty()
+  service: string;
 }

@@ -21,6 +21,9 @@ export class Board {
     ref: 'Webtoon',
   })
   webtoon: string;
+
+  @Prop({ required: true })
+  service: string;
 }
 
 export const BoardSchema = SchemaFactory.createForClass(Board);

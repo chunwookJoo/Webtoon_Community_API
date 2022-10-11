@@ -8,18 +8,34 @@ export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
   @Post('/create')
-  async createBoard(@Body() createboardDto: CreateBoardDto): Promise<Board> {
+  async createBoard(@Body() createboardDto: CreateBoardDto): Promise<Object> {
     return this.boardsService.createBoard(
       createboardDto.title,
       createboardDto.description,
       createboardDto.author,
       createboardDto.webtoon,
+      createboardDto.service,
     );
   }
 
-  @Get()
+  @Get('/')
   async getAllBoards(): Promise<Board[]> {
     return this.boardsService.getAllBoards();
+  }
+
+  @Get('/naver')
+  async getNaverBoard(): Promise<Board[]> {
+    return this.boardsService.getNaverBoard();
+  }
+
+  @Get('/kakao')
+  async getKakaoBoard(): Promise<Board[]> {
+    return this.boardsService.getKakaoBoard();
+  }
+
+  @Get('/kakaoPage')
+  async getKakaoPageBoard(): Promise<Board[]> {
+    return this.boardsService.getKakaoPageBoard();
   }
 
   @Get('/:id')
