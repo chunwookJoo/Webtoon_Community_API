@@ -17,19 +17,19 @@ import { WebtoonsService } from './webtoons.service';
   imports: [
     MongooseModule.forFeature([
       { name: Webtoon.name, schema: WebtoonSchema },
-      { name: UpdateInfo.name, schema: UpdateInfoSchema },
+      // { name: UpdateInfo.name, schema: UpdateInfoSchema },
     ]),
   ],
   controllers: [
-    UpdateInfoController,
+    // UpdateInfoController,
     SearchController,
     AllPlatformController,
     NaverController,
     KakaoController,
     KakaoPageController,
   ],
-  providers: [WebtoonsService, UpdateInfoService],
-  // providers: [WebtoonsService],
+  // providers: [WebtoonsService, UpdateInfoService],
+  providers: [WebtoonsService],
 })
 export class WebtoonModule {
   constructor() {}
