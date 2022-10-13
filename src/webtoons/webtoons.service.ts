@@ -21,4 +21,8 @@ export class WebtoonsService {
   async getWebtoon(id: string) {
     return this.webtoonModel.findById(id);
   }
+
+  async findNewKakao(): Promise<Webtoon[]> {
+    return this.webtoonModel.find().where('title').equals('바니와 오빠들');
+  }
 }

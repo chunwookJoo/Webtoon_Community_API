@@ -11,10 +11,6 @@ import { join } from 'path';
 
 @Module({
   imports: [
-    // ConfigModule.forRoot({
-    //   load: [config],
-    //   isGlobal: true,
-    // }),
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

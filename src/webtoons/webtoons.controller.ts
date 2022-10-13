@@ -23,6 +23,11 @@ class WebtoonsController {
     });
   }
 
+  @Get('newKakao')
+  async newKakao() {
+    return this.webtoonsService.findNewKakao();
+  }
+
   @Get('finished')
   async finished() {
     return this.webtoonsService.find({

@@ -65,6 +65,15 @@ async function getFinishedWebtoon(
   return classifyWebtoon(data.data[0].cardGroups[0].cards, 7);
 }
 
+async function getNewWebtoon(
+  placement: 'channel' | 'novel',
+): Promise<WebtoonObject.CrawlerOutput[]> {
+  const { data }: any = await axios.get(
+    `${API_URL}sections?placement=${placement}_new`,
+  );
+  return classifyWebtoon(data.data[0].cardGroups[0].cards, 8);
+}
+
 export default async function kakaoCrawler() {
   console.log('kakao crawler start');
   const result: WebtoonObject.CrawlerOutput[] = [];
@@ -72,6 +81,8 @@ export default async function kakaoCrawler() {
   const novel_week_webtoon = await getWeekWebtoon('novel');
   const general_finished_webtoon = await getFinishedWebtoon('channel');
   const novel_finished_webtoon = await getFinishedWebtoon('novel');
+  const general_new_webtoon = await getNewWebtoon('channel');
+  const novel_new_webtoon = await getNewWebtoon('novel');
   general_week_webtoon.forEach((weekWebtoon) => {
     result.push(...weekWebtoon);
   });
@@ -80,6 +91,8 @@ export default async function kakaoCrawler() {
   });
   result.push(...general_finished_webtoon);
   result.push(...novel_finished_webtoon);
+  result.push(...general_new_webtoon);
+  result.push(...novel_new_webtoon);
   console.log('kakao crawler end');
   return result;
 }
