@@ -12,7 +12,7 @@
     "build": "npm run copy-files && nest build",
     "heroku-postbuild": "npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "npm run copy-files && nest build && pm2 start dist/src/main",
+    "start": "npm run copy-files && pm2 start dist/src/main",
     "start:dev": "npm run copy-files && nest start --watch",
     "start:debug": "npm run copy-files && nest start --debug --watch",
     "start:prod": "npm run copy-files && node dist/src/main",
