@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/903.29c5faac.chunk.js","mappings":"iJAUA,UARsB,WACrB,OACC,0BACC,yEAGF,C","sources":["pages/WebtoonDetail.js"],"sourcesContent":["import React from \"react\";\r\n\r\nconst WebtoonDetail = () => {\r\n\treturn (\r\n\t\t<div>\r\n\t\t\t<h2>웹툰 상세페이지</h2>\r\n\t\t</div>\r\n\t);\r\n};\r\n\r\nexport default WebtoonDetail;\r\n"],"names":[],"sourceRoot":""}
