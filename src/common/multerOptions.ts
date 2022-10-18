@@ -15,7 +15,7 @@ export const multerOptions = {
 
   storage: diskStorage({
     destination: (request, file, callback) => {
-      const uploadPath: string = 'dist/public/userProfileImages';
+      const uploadPath: string = 'storage/userProfileImages';
 
       if (!existsSync(uploadPath)) {
         // public 폴더가 존재하지 않을시, 생성합니다.
