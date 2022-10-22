@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f517f2dc.css",
-    "main.js": "/static/js/main.62cf4955.js",
+    "main.css": "/static/css/main.230e9397.css",
+    "main.js": "/static/js/main.19317e21.js",
     "static/css/384.16916c4e.chunk.css": "/static/css/384.16916c4e.chunk.css",
     "static/js/384.6d79b8ae.chunk.js": "/static/js/384.6d79b8ae.chunk.js",
     "static/css/608.05fc7dc1.chunk.css": "/static/css/608.05fc7dc1.chunk.css",
@@ -27,8 +27,8 @@
     "static/media/kakao.svg": "/static/media/kakao.1d488991936f57f903b58ffbfbddb8d4.svg",
     "static/media/kakaopage.svg": "/static/media/kakaopage.4c045110db51984163599bc6ba0dceea.svg",
     "index.html": "/index.html",
-    "main.f517f2dc.css.map": "/static/css/main.f517f2dc.css.map",
-    "main.62cf4955.js.map": "/static/js/main.62cf4955.js.map",
+    "main.230e9397.css.map": "/static/css/main.230e9397.css.map",
+    "main.19317e21.js.map": "/static/js/main.19317e21.js.map",
     "384.16916c4e.chunk.css.map": "/static/css/384.16916c4e.chunk.css.map",
     "384.6d79b8ae.chunk.js.map": "/static/js/384.6d79b8ae.chunk.js.map",
     "608.05fc7dc1.chunk.css.map": "/static/css/608.05fc7dc1.chunk.css.map",
@@ -50,7 +50,7 @@
     "808.bc5411e5.chunk.js.map": "/static/js/808.bc5411e5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f517f2dc.css",
-    "static/js/main.62cf4955.js"
+    "static/css/main.230e9397.css",
+    "static/js/main.19317e21.js"
   ]
 }
