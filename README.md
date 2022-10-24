@@ -26,14 +26,5 @@
 https://github.com/chunwookJoo/Korea_Webtoon_Forum <br/>
 데모 사이트 배포 준비중
 
-## 참고
-**https://github.com/HyeokjaeLee/korea-webtoon-api**
-```
-위 사이트를 많이 참고했습니다.
-사실상 거의 코드는 같지만 위 API를 그대로 쓰는 것이 아닌 제 API를 따로 만들어서 개발했습니다.
-크롤링 부분도 참고를 많이 했습니다. 윗 분의 코드를 보며 하나씩 파헤쳤고 네이버 웹툰의 "신작" 부분을 제가 따로 추가해서 넣었습니다.
-정말 감사드립니다.
-```
-
 
 
