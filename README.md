@@ -24,7 +24,6 @@
 
 ## Demo
 https://github.com/chunwookJoo/Korea_Webtoon_Forum <br/>
-데모 사이트 배포 준비중
 
 
 
