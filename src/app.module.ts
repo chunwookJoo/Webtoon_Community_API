@@ -16,7 +16,7 @@ import { join } from 'path';
       useUnifiedTopology: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public/index.html'),
+      rootPath: join(__dirname, '..', 'public'),
     }),
     BoardsModule,
     AuthModule,
