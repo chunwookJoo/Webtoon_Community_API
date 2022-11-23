@@ -3,7 +3,7 @@ import { Board } from './schema/board.schema';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 
-@Controller('board')
+@Controller('/api/board')
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
