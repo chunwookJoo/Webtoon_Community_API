@@ -244,9 +244,4 @@ export class AuthController {
     const result = await this.authService.deleteMyWebtoon(id, body);
     return res.send(result);
   }
-
-  // @Post('/user/logout')
-  // async userLogout(@Body() body): Promise<void> {
-  //   return this.authService.userLogout(body);
-  // }
 }

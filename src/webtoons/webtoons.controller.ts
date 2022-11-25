@@ -23,11 +23,6 @@ class WebtoonsController {
     });
   }
 
-  @Get('newKakao')
-  async newKakao() {
-    return this.webtoonsService.findNewKakao();
-  }
-
   @Get('finished')
   async finished() {
     return this.webtoonsService.find({
@@ -92,28 +87,28 @@ export class SearchController {
   }
 }
 
-@Controller('all')
+@Controller('/api/all')
 export class AllPlatformController extends WebtoonsController {
   constructor(_super: WebtoonsService) {
     super(_super, 'all');
   }
 }
 
-@Controller('naver')
+@Controller('/api/naver')
 export class NaverController extends WebtoonsController {
   constructor(_super: WebtoonsService) {
     super(_super, 'naver');
   }
 }
 
-@Controller('kakao')
+@Controller('/api/kakao')
 export class KakaoController extends WebtoonsController {
   constructor(_super: WebtoonsService) {
     super(_super, 'kakao');
   }
 }
 
-@Controller('kakao-page')
+@Controller('/api/kakao-page')
 export class KakaoPageController extends WebtoonsController {
   constructor(_super: WebtoonsService) {
     super(_super, 'kakao-page');
