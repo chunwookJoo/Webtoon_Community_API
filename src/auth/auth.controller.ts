@@ -1,24 +1,18 @@
 import {
-  BadRequestException,
   Body,
   Controller,
   Get,
   Param,
-  Patch,
   Post,
-  Put,
-  Req,
   Res,
-  UseGuards,
   ValidationPipe,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express/multer';
-import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { AuthCredentialDto, NicknameDto } from './dto/auth-credential.dto';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { User } from './schema/user.schema';
 import { multerOptions } from 'src/common/multerOptions';
 

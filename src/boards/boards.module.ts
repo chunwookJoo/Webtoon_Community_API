@@ -3,11 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { BoardsController } from './boards.controller';
 import { BoardRepository } from './board.repository';
 import { BoardsService } from './boards.service';
-import { AuthModule } from 'src/auth/auth.module';
-// import { Board } from './board.entity';
 import { Board } from './schema/board.schema';
 import { BoardSchema } from './schema/board.schema';
-// import { Board, BoardSchema } from './schema/board.shema';
 
 @Module({
   imports: [

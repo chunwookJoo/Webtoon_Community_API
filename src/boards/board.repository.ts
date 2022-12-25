@@ -1,31 +1,8 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
-import { BoardStatus } from './board-status.enum';
 import { Board } from './schema/board.schema';
-import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardDocument } from './schema/board.schema';
-
-// @EntityRepository(Board)
-// export class BoardRepository extends Repository<Board> {
-//   async createBoard(
-//     createBoardDto: CreateBoardDto,
-//     user: User,
-//   ): Promise<Board> {
-//     const { title, description } = createBoardDto;
-
-//     const board = this.create({
-//       title,
-//       description,
-//       status: BoardStatus.PUBLIC,
-//       user,
-//     });
-
-//     await this.save(board);
-
-//     return board;
-//   }
-// }
 
 @Injectable()
 export class BoardRepository {

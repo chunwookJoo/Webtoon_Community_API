@@ -1,9 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthCredentialDto, NicknameDto } from './dto/auth-credential.dto';
 import { UserRepository } from './user.repository';
-// import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
-import { v4 as uuidv4 } from 'uuid';
 import { User } from './schema/user.schema';
 import axios from 'axios';
 import * as qs from 'qs';
