@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { User } from 'src/auth/schema/user.schema';
 import { BoardRepository } from './board.repository';
 import { Board } from './schema/board.schema';
 
@@ -40,5 +41,9 @@ export class BoardsService {
 
   async getBoardById(_id: string): Promise<Board> {
     return this.boardRepository.findOne({ _id });
+  }
+
+  async deleteBoard(id: string) {
+    return this.boardRepository.findOneDelete({ id });
   }
 }

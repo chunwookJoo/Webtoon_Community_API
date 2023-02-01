@@ -61,4 +61,13 @@ export class BoardRepository {
       .populate('author')
       .populate('webtoon');
   }
+
+  async findOneDelete({ id }) {
+    try {
+      await this.boardModel.findByIdAndDelete(id);
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException();
+    }
+  }
 }
