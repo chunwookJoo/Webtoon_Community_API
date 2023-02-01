@@ -6,7 +6,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { WebtoonModule } from './webtoons/webtoons.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
-// import config from 'config/config';
 import { join } from 'path';
 
 @Module({

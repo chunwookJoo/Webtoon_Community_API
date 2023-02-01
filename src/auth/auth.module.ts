@@ -6,7 +6,6 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { UserRepository } from './user.repository';
-import * as config from 'config';
 import { User, UserSchema } from './schema/user.schema';
 
 // const jwtConfig = config.get('jwt');
@@ -20,7 +19,7 @@ import { User, UserSchema } from './schema/user.schema';
       secret: process.env.JWT_SECRET,
       signOptions: {
         // expiresIn: jwtConfig.expiresIn,
-        expiresIn: process.env.JWT_EXPIRESIN,
+        expiresIn: process.env.JWT_EXPIRED,
       },
     }),
   ],

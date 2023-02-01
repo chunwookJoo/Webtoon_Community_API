@@ -26,14 +26,6 @@ export class AuthCredentialDto {
   gender: string;
 
   myWebtoon: string[];
-
-  // @IsString()
-  // @MinLength(4)
-  // @MaxLength(20)
-  // @Matches(/^[a-zA-Z0-9]*$/, {
-  //   message: '비밀번호는 영문 또는 숫자만 가능합니다.',
-  // })
-  // password: string;
 }
 
 export class NicknameDto {

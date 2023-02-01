@@ -241,27 +241,4 @@ export class AuthService {
   async deleteMyWebtoon(id: string, body: any): Promise<Object> {
     return this.userRepository.deleteMyWebtoon(id, body);
   }
-
-  // async userLogout(body): Promise<any> {
-  //   const { access_token, admin_key } = body;
-  //   console.log(access_token);
-  //   console.log(admin_key);
-
-  //   const kakaoLogoutUrl = 'https://kapi.kakao.com/v1/user/logout';
-
-  //   try {
-  //     const response = await axios({
-  //       method: 'POST',
-  //       url: kakaoLogoutUrl,
-  //       headers: {
-  //         Authorization: `Bearer ${access_token}/KakaoAK ${admin_key}`,
-  //       },
-  //     });
-  //     console.log(response);
-
-  //     return response;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 }
