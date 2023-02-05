@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a target="blank"><img src="https://user-images.githubusercontent.com/64945491/216829548-c50edcc6-c54d-45a9-82a4-bddf4de75dc7.png" width="140" alt="Logo" /></a>
 </p>
 
 # 웹툰 커뮤니티 서비스 "이거 봤어?" API
