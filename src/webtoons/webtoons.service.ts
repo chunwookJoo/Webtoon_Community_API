@@ -14,7 +14,15 @@ export class WebtoonsService {
     return this.webtoonModel.find().exec();
   }
 
-  async find(option: object) {
+  async getWebtoonList(option: any) {
+    const limit = 18;
+    let page = parseInt(option.page) || 1;
+    let offset = (page - 1) * limit;
+
+    return this.webtoonModel.find(option).limit(limit).skip(offset);
+  }
+
+  async getSearchWebtoonList(option: any) {
     return this.webtoonModel.find(option);
   }
 

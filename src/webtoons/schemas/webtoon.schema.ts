@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import * as mongoosePaginate from 'mongoose-paginate-v2';
 import { Document } from 'mongoose';
 
 export type WebtoonDocument = Webtoon & Document;
@@ -30,4 +31,6 @@ export class Webtoon {
   additional: WebtoonObject.Additional;
 }
 
-export const WebtoonSchema = SchemaFactory.createForClass(Webtoon);
+const schema = SchemaFactory.createForClass(Webtoon);
+schema.plugin(mongoosePaginate);
+export const WebtoonSchema = schema;

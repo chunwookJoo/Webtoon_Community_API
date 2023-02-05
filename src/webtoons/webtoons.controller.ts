@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, Req } from '@nestjs/common';
 import { WebtoonsService } from './webtoons.service';
 import { removeSpecialChars } from 'src/functions/common-function';
 class WebtoonsController {
@@ -12,38 +12,43 @@ class WebtoonsController {
   platform: string;
   @Get('/')
   async all() {
-    return this.webtoonsService.find(this.serviceOption);
+    return this.webtoonsService.getWebtoonList(this.serviceOption);
   }
 
   @Get('new')
-  async new() {
-    return this.webtoonsService.find({
+  async new(@Query('page') page: string) {
+    return this.webtoonsService.getWebtoonList({
       ...this.serviceOption,
       week: { $in: [8] },
+      page,
     });
   }
 
   @Get('finished')
-  async finished() {
-    return this.webtoonsService.find({
+  async finished(@Query('page') page: string) {
+    return this.webtoonsService.getWebtoonList({
       ...this.serviceOption,
       week: { $in: [7] },
+      page,
     });
   }
 
   @Get('week')
-  async week(@Query('day') day: string) {
+  async week(@Query('day') day: string, @Query('page') page: string) {
     const dayNum = Number(day);
+
     if (!day)
-      return this.webtoonsService.find({
+      return this.webtoonsService.getWebtoonList({
         ...this.serviceOption,
         week: { $in: [7] },
+        page,
       });
 
     if (0 <= dayNum && dayNum <= 6)
-      return this.webtoonsService.find({
+      return this.webtoonsService.getWebtoonList({
         ...this.serviceOption,
         week: { $in: [dayNum] },
+        page,
       });
 
     return {
@@ -62,7 +67,7 @@ export class SearchController {
     if (!!keyword) {
       keyword = keyword.replace(/%20/g, '');
       keyword = removeSpecialChars(keyword);
-      const result = this.webtoonsService.find({
+      const result = this.webtoonsService.getSearchWebtoonList({
         _id: { $regex: `${keyword}[^naver|kakao|kakao-page]+`, $options: 'i' },
       });
       return (await result).length !== 0
