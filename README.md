@@ -16,6 +16,8 @@
 
 웹툰 플랫폼의 웹툰 정보들을 제공합니다.
 
+### [프론트 깃헙 주소](https://github.com/chunwookJoo/Korea_Webtoon_Forum)
+
 <br>
 
 ## 시작 가이드
@@ -88,4 +90,3 @@ $ npm run start:dev
 
  <br>
 
-## [프론트 배포 깃헙 주소](https://github.com/chunwookJoo/Korea_Webtoon_Forum)
