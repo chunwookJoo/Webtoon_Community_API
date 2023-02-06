@@ -1,0 +1,1 @@
+import{u as n,a as r}from"./index-1062e1fd.js";import{R as c}from"./RegistPage-ec959bef.js";import"./Input-c8df33ff.js";import"./Input.styles-3b5c053d.js";import"./Select-e8f5c743.js";const f=()=>{const{state:o}=n(),t=o.data,a=o.platform,s=t.access_token,e=t.id;return r(c,{platform:a,account:t,token:s,id:e})};export{f as default};

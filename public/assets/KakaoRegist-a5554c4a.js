@@ -1,0 +1,1 @@
+import{u as e,a as r}from"./index-1062e1fd.js";import{R as k}from"./RegistPage-ec959bef.js";import"./Input-c8df33ff.js";import"./Input.styles-3b5c053d.js";import"./Select-e8f5c743.js";const f=()=>{const{state:t}=e(),o=t.data,a=t.platform,s=o.kakao_account,c=o.access_token,n=o.id;return r(k,{platform:a,account:s,token:c,id:n})};export{f as default};

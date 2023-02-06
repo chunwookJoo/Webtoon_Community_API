@@ -46,7 +46,7 @@ $ nvm use
 > .env파일을 생성 후 본인의 DB와 PORT설정을 합니다.
 > <br>
 
-npm 설지
+npm 설치 / 실행
 
 ```bash
 $ npm install
@@ -89,4 +89,3 @@ $ npm run start:dev
 - 본인이 쓴 글을 삭제할 수 있습니다. (개발중)
 
  <br>
-
