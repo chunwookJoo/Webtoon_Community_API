@@ -156,6 +156,8 @@ export class AuthService {
               user,
               jwtToken: jwtToken,
             };
+            console.log(jwtToken);
+            console.log(data);
             return data;
           } else {
             const data = responseUserInfo.data;
