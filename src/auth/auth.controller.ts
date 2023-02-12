@@ -64,6 +64,8 @@ export class AuthController {
    */
   @Post('/kakaoLogin')
   async kakaoLogin(@Body() param: any, @Res() res: Response): Promise<any> {
+    console.log(res);
+
     try {
       const { rest_api_key, auth_code, domain } = param;
       if (!auth_code || !domain) {
