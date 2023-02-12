@@ -19,7 +19,7 @@ import { User, UserSchema } from './schema/user.schema';
       secret: process.env.JWT_SECRET,
       signOptions: {
         // expiresIn: jwtConfig.expiresIn,
-        expiresIn: process.env.JWT_EXPIRED,
+        expiresIn: process.env.JWT_EXPIRESIN,
       },
     }),
   ],
