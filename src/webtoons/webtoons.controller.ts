@@ -63,12 +63,13 @@ class WebtoonsController {
 export class SearchController {
   constructor(private readonly webtoonsService: WebtoonsService) {}
   @Get()
-  async search(@Query(`keyword`) keyword: string) {
+  async search(@Query(`keyword`) keyword: string, @Query('page') page: string) {
     if (!!keyword) {
       keyword = keyword.replace(/%20/g, '');
       keyword = removeSpecialChars(keyword);
       const result = this.webtoonsService.getSearchWebtoonList({
         _id: { $regex: `${keyword}[^naver|kakao|kakao-page]+`, $options: 'i' },
+        page,
       });
       return (await result).length !== 0
         ? result

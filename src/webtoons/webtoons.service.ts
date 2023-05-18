@@ -23,7 +23,11 @@ export class WebtoonsService {
   }
 
   async getSearchWebtoonList(option: any) {
-    return this.webtoonModel.find(option);
+    const limit = 18;
+    let page = parseInt(option.page) || 1;
+    let offset = (page - 1) * limit;
+
+    return this.webtoonModel.find(option).limit(limit).skip(offset);
   }
 
   async getWebtoon(id: string) {
