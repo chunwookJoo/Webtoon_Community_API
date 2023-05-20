@@ -15,13 +15,13 @@ export class AuthService {
   ) {}
 
   /**
-   * 카카오 유저 회원가입
+   *  유저 회원가입
    * @param body
    * @returns 유저 정보, jwt 토큰
    */
-  async kakaoSignUp(body: AuthCredentialDto): Promise<any> {
+  async signUp(body: AuthCredentialDto): Promise<any> {
     try {
-      this.userRepository.createKakaoUser(body);
+      this.userRepository.createUser(body);
 
       // 유저 토큰 생성
       const { id } = body;
@@ -29,35 +29,7 @@ export class AuthService {
       const jwtToken = this.jwtService.sign(payload);
       const data: object = {
         RESULT: 200,
-        message: '카카오 회원가입 성공',
-        user_data: body,
-        jwtToken: jwtToken,
-      };
-      return data;
-    } catch (error) {
-      return {
-        RESULT: 400,
-        message: '회원가입 실패',
-      };
-    }
-  }
-
-  /**
-   * 네이버 유저 회원가입
-   * @param body
-   * @returns 유저 정보, jwt 토큰
-   */
-  async naverSignUp(body: AuthCredentialDto): Promise<any> {
-    try {
-      this.userRepository.createKakaoUser(body);
-
-      // 유저 토큰 생성
-      const { id } = body;
-      const payload = { id };
-      const jwtToken = this.jwtService.sign(payload);
-      const data: object = {
-        RESULT: 200,
-        message: '네이버 회원가입 성공',
+        message: '회원가입 성공',
         user_data: body,
         jwtToken: jwtToken,
       };
@@ -147,12 +119,9 @@ export class AuthService {
            * 카카오에서 준 id가 DB에 저장되있는지 확인
            */
           if (user) {
-            // 회원가입이 되어있으면
-            // 유저 토큰 생성
             const payload = { id };
             const jwtToken = this.jwtService.sign(payload);
             const data: object = {
-              access_token: response.data.access_token,
               user,
               jwtToken: jwtToken,
             };
@@ -204,7 +173,6 @@ export class AuthService {
         const payload = { id };
         const jwtToken = this.jwtService.sign(payload);
         const data: object = {
-          access_token,
           user,
           jwtToken: jwtToken,
         };
@@ -217,8 +185,8 @@ export class AuthService {
     }
   }
 
-  async getUserById(id: string): Promise<User> {
-    return this.userRepository.findOne({ id });
+  async getUserById(authToken: string): Promise<User> {
+    return this.userRepository.findOne({ authToken });
   }
 
   async uploadProfileImg(id: string, file: File[]): Promise<User> {

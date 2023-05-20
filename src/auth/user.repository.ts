@@ -11,24 +11,7 @@ import { FilterQuery, Model } from 'mongoose';
 export class UserRepository {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  /**
-   * 카카오 유저 회원가입
-   */
-  async createKakaoUser(user: User): Promise<any> {
-    const newUser = new this.userModel(user);
-
-    try {
-      newUser.save();
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
-  }
-
-  /**
-   * 네이버 유저 회원가입
-   */
-  async createNaverUser(user: User): Promise<void> {
+  async createUser(user: User): Promise<void> {
     const newUser = new this.userModel(user);
 
     try {

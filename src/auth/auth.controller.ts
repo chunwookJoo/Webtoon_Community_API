@@ -21,37 +21,19 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   /**
-   * 카카오 회원가입
+   * 회원가입
    * @param body 닉네임, 연령대, 성별
    * @param res
    */
-  @Post('/kakaoSignUp')
-  async kakaoSignUp(@Body(ValidationPipe) body: AuthCredentialDto, @Res() res) {
+  @Post('/signUp')
+  async signUp(@Body(ValidationPipe) body: AuthCredentialDto, @Res() res) {
     try {
-      const result = await this.authService.kakaoSignUp(body);
+      const result = await this.authService.signUp(body);
       res.send(result);
     } catch (error) {
       res.send({
         RESULT: 400,
-        message: '카카오 회원가입 실패',
-      });
-    }
-  }
-
-  /**
-   * 네이버 회원가입
-   * @param body 닉네임, 연령대, 성별
-   * @param res
-   */
-  @Post('/naverSignUp')
-  async naverSignUp(@Body(ValidationPipe) body: AuthCredentialDto, @Res() res) {
-    try {
-      const result = await this.authService.naverSignUp(body);
-      res.send(result);
-    } catch (error) {
-      res.send({
-        RESULT: 400,
-        message: '네이버 회원가입 실패',
+        message: '회원가입 실패',
       });
     }
   }
@@ -110,6 +92,7 @@ export class AuthController {
       const naver = await this.authService.naverLogin({
         access_token,
       });
+
       if (naver.jwtToken) {
         return res.send({
           user: naver,
@@ -154,9 +137,9 @@ export class AuthController {
    * @param id userId
    * @returns user
    */
-  @Get('/userinfo/:id')
-  async getUserById(@Param('id') id: string): Promise<User> {
-    return this.authService.getUserById(id);
+  @Get('/userinfo/:authToken')
+  async getUserById(@Param('authToken') authToken: string): Promise<User> {
+    return this.authService.getUserById(authToken);
   }
 
   /**

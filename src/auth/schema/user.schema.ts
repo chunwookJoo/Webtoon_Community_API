@@ -5,10 +5,7 @@ export type UserDocument = User & Document;
 @Schema()
 export class User {
   @Prop()
-  kakaoToken: string;
-
-  @Prop()
-  naverToken: string;
+  authToken: string;
 
   @Prop({ required: true })
   id: string;

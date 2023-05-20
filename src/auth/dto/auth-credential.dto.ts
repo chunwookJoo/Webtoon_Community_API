@@ -8,8 +8,7 @@ import {
 import { ObjectId } from 'mongoose';
 
 export class AuthCredentialDto {
-  kakaoToken: string;
-  naverToken: string;
+  authToken: string;
   id: string;
   email: string;
   profileImage: string;
