@@ -1,1 +1,0 @@
-import{u as s,a as e}from"./index-677cc02a.js";import{S as c}from"./SignUpPage-5a0282f8.js";import"./user-e15ce6c5.js";import"./Input-bf0e9a84.js";import"./Input.styles-b9fce087.js";const f=()=>{const{state:o}=s(),t=o.data,a=o.platform,n=t.access_token,r=t.id;return e(c,{platform:a,account:t,token:n,id:r})};export{f as default};
