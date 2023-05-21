@@ -186,6 +186,8 @@ export class AuthService {
   }
 
   async getUserById(authToken: string): Promise<User> {
+    console.log(authToken);
+
     return this.userRepository.findOne({ authToken });
   }
 
