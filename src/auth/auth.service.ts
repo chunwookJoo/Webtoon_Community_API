@@ -194,6 +194,7 @@ export class AuthService {
     for (const item of file) {
       generatedFiles.push(createImageURL(item));
     }
+    console.log('service', generatedFiles);
 
     return this.userRepository.updateUserImgById(_id, generatedFiles[0]);
   }
