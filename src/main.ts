@@ -13,8 +13,8 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  app.useStaticAssets(join(__dirname, '../../storage'), {
-    prefix: '/storage',
+  app.useStaticAssets(join(__dirname, '../../public'), {
+    prefix: '/public',
   });
   const PORT = process.env.PORT || 3000;
   await app.listen(PORT);
