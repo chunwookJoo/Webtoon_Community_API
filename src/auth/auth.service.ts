@@ -186,22 +186,20 @@ export class AuthService {
   }
 
   async getUserById(authToken: string): Promise<User> {
-    console.log(authToken);
-
     return this.userRepository.findOne({ authToken });
   }
 
-  async uploadProfileImg(id: string, file: File[]): Promise<User> {
+  async uploadProfileImg(_id: string, file: File[]): Promise<User> {
     const generatedFiles: string[] = [];
     for (const item of file) {
       generatedFiles.push(createImageURL(item));
     }
 
-    return this.userRepository.updateUserImgById(id, generatedFiles[0]);
+    return this.userRepository.updateUserImgById(_id, generatedFiles[0]);
   }
 
-  async updateUserById(id: string, body: any): Promise<User> {
-    return this.userRepository.updateUserById(id, body);
+  async updateUserById(_id: string, body: any): Promise<User> {
+    return this.userRepository.updateUserById(_id, body);
   }
 
   async insertMyWebtoon(id: string, body: any): Promise<Object> {

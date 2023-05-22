@@ -152,12 +152,13 @@ export class AuthController {
   @Post('/userinfo/profileimg/upload/:id')
   async uploadProfileImg(
     @UploadedFiles() file: File[],
-    @Param('id') id: string,
+    @Param('id') _id: string,
   ) {
-    this.authService.uploadProfileImg(id, file);
+    const result = await this.authService.uploadProfileImg(_id, file);
 
     return {
       status: 200,
+      updateUser: result,
       message: '이미지 업로드 성공',
     };
   }
@@ -170,11 +171,11 @@ export class AuthController {
    */
   @Post('/userinfo/update/:id')
   async updateUserById(
-    @Param('id') id: string,
+    @Param('id') _id: string,
     @Body() body: any,
     @Res() res: Response,
   ): Promise<void> {
-    const result = await this.authService.updateUserById(id, body);
+    const result = await this.authService.updateUserById(_id, body);
     try {
       res.send({
         user: result,

@@ -32,12 +32,12 @@ export class UserRepository {
 
   /**
    * id로 찾고 유저정보 업데이트
-   * @param id
+   * @param _id
    * @param body
    * @returns 업데이트된 유저정보
    */
-  async updateUserById(id: string, body: any): Promise<User> {
-    const post = await this.findOne({ id });
+  async updateUserById(_id: string, body: any): Promise<User> {
+    const post = await this.findOne({ _id });
 
     post.nickname = body.nickname;
     post.age = body.age;
@@ -55,12 +55,12 @@ export class UserRepository {
 
   /**
    * id로 찾고 프로필사진 업데이트
-   * @param id
+   * @param _id
    * @param file
    * @returns 업데이트된 유저정보
    */
-  async updateUserImgById(id: string, file: string): Promise<User> {
-    const post = await this.findOne({ id });
+  async updateUserImgById(_id: string, file: string): Promise<User> {
+    const post = await this.findOne({ _id });
 
     post.profileImage = file;
     const updateUser = new this.userModel(post);
