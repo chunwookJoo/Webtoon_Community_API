@@ -50,49 +50,67 @@ const API_URL = 'https://gateway-kw.kakao.com/section/v1/';
 async function getWeekWebtoon(
   original: 'general' | 'novel',
 ): Promise<WebtoonObject.CrawlerOutput[][]> {
-  const { data }: any = await axios.get(`${API_URL}pages/${original}-weekdays`);
-  return data.data.sections.map((sections, weeknum: number) =>
-    classifyWebtoon(sections.cardGroups[0].cards, weeknum),
-  );
+  try {
+    const { data }: any = await axios.get(
+      `${API_URL}pages/${original}-weekdays`,
+    );
+    return data.data.sections.map((sections, weeknum: number) =>
+      classifyWebtoon(sections.cardGroups[0].cards, weeknum),
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function getFinishedWebtoon(
   placement: 'channel' | 'novel',
 ): Promise<WebtoonObject.CrawlerOutput[]> {
-  const { data }: any = await axios.get(
-    `${API_URL}sections?placement=${placement}_completed`,
-  );
-  return classifyWebtoon(data.data[0].cardGroups[0].cards, 7);
+  try {
+    const { data }: any = await axios.get(
+      `${API_URL}sections?placement=${placement}_completed`,
+    );
+    return classifyWebtoon(data.data[0].cardGroups[0].cards, 7);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function getNewWebtoon(
   placement: 'channel' | 'novel',
 ): Promise<WebtoonObject.CrawlerOutput[]> {
-  const { data }: any = await axios.get(
-    `${API_URL}sections?placement=${placement}_new`,
-  );
-  return classifyWebtoon(data.data[0].cardGroups[0].cards, 8);
+  try {
+    const { data }: any = await axios.get(
+      `${API_URL}sections?placement=${placement}_new`,
+    );
+    return classifyWebtoon(data.data[0].cardGroups[0].cards, 8);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export default async function kakaoCrawler() {
-  console.log('kakao crawler start');
-  const result: WebtoonObject.CrawlerOutput[] = [];
-  const general_week_webtoon = await getWeekWebtoon('general');
-  const novel_week_webtoon = await getWeekWebtoon('novel');
-  const general_finished_webtoon = await getFinishedWebtoon('channel');
-  const novel_finished_webtoon = await getFinishedWebtoon('novel');
-  const general_new_webtoon = await getNewWebtoon('channel');
-  const novel_new_webtoon = await getNewWebtoon('novel');
-  general_week_webtoon.forEach((weekWebtoon) => {
-    result.push(...weekWebtoon);
-  });
-  novel_week_webtoon.forEach((weekWebtoon) => {
-    result.push(...weekWebtoon);
-  });
-  result.push(...general_finished_webtoon);
-  result.push(...novel_finished_webtoon);
-  result.push(...general_new_webtoon);
-  result.push(...novel_new_webtoon);
-  console.log('kakao crawler end');
-  return result;
+  try {
+    console.log('kakao crawler start');
+    const result: WebtoonObject.CrawlerOutput[] = [];
+    const general_week_webtoon = await getWeekWebtoon('general');
+    const novel_week_webtoon = await getWeekWebtoon('novel');
+    const general_finished_webtoon = await getFinishedWebtoon('channel');
+    const novel_finished_webtoon = await getFinishedWebtoon('novel');
+    const general_new_webtoon = await getNewWebtoon('channel');
+    const novel_new_webtoon = await getNewWebtoon('novel');
+    general_week_webtoon.forEach((weekWebtoon) => {
+      result.push(...weekWebtoon);
+    });
+    novel_week_webtoon.forEach((weekWebtoon) => {
+      result.push(...weekWebtoon);
+    });
+    result.push(...general_finished_webtoon);
+    result.push(...novel_finished_webtoon);
+    result.push(...general_new_webtoon);
+    result.push(...novel_new_webtoon);
+    console.log('kakao crawler end');
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
 }

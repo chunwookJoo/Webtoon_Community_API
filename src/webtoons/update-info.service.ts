@@ -5,7 +5,7 @@ import { UpdateInfo, UpdateInfoDocument } from './schemas/update-info.schema';
 import { Webtoon, WebtoonDocument } from './schemas/webtoon.schema';
 import kakao_crawler from 'src/functions/kakao-crawler';
 import naver_crawler from 'src/functions/naver-crawler';
-import kakaoPage_crawler from 'src/functions/kakaoPage-crawler';
+// import kakaoPage_crawler from 'src/functions/kakaoPage-crawler';
 import { removeSpecialChars } from 'src/functions/common-function';
 import { uniq } from 'lodash';
 
@@ -36,7 +36,7 @@ export class UpdateInfoService {
     const WebtoonsArr = await Promise.all([
       naver_crawler(),
       kakao_crawler(),
-      kakaoPage_crawler(),
+      // kakaoPage_crawler(),
     ]);
 
     let cralwer_IDs: string[] = [];

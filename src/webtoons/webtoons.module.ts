@@ -30,7 +30,7 @@ import { WebtoonsService } from './webtoons.service';
     AllPlatformController,
     NaverController,
     KakaoController,
-    KakaoPageController,
+    // KakaoPageController,
   ],
   // providers: [WebtoonsService, UpdateInfoService],
   providers: [WebtoonsService],

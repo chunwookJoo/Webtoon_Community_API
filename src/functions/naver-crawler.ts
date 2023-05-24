@@ -2,12 +2,16 @@ import axios from 'axios';
 import { load } from 'cheerio';
 
 export default async function naver_crawler() {
-  console.log('naver crawler start');
-  const weekWebtoon = await get_weekWebtoon();
-  const finishedWebtoon = await get_finishedWebtoon();
-  const newWebtoon = await get_newWebtoon();
-  console.log('naver crawler end');
-  return weekWebtoon.concat(finishedWebtoon).concat(newWebtoon);
+  try {
+    console.log('naver crawler start');
+    const weekWebtoon = await get_weekWebtoon();
+    const finishedWebtoon = await get_finishedWebtoon();
+    const newWebtoon = await get_newWebtoon();
+    console.log('naver crawler end');
+    return weekWebtoon.concat(finishedWebtoon).concat(newWebtoon);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const NAVER_WEBTOON_URL = 'https://m.comic.naver.com';
@@ -101,6 +105,7 @@ async function get_webtoonData(
         .find('.author')
         .text()
         .replace(/, |\ \/ /g, ',');
+
       return {
         title: $(element).find('.title').text(),
         author: author,
